@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <Carousel>
+    <Carousel class="carousel">
       <slide>
         <div>Hello</div>
       </slide>
@@ -21,3 +21,10 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+  .carousel{
+    max-height: 100vh;
+    height: 100vh;
+  }
+</style>
