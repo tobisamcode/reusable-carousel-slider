@@ -11,6 +11,11 @@
                 <i @click="nextSlide" class="fas fa-chevron-right"></i>
             </div>
         </div>
+
+        <!-- Pagination -->
+        <div class="pagination">
+            <span v-for="(slide, index) in getSlideCount" :key="index">{{ slide }}</span>
+        </div>
     </div>
 </template>
 
@@ -18,7 +23,7 @@
 import {ref, onMounted} from 'vue'
 export default {
     setup(){
-        const currentSlide = ref(3)
+        const currentSlide = ref(3) 
         const getSlideCount = ref(null)
 
         // next slide 
@@ -43,7 +48,7 @@ export default {
             getSlideCount.value = document.querySelectorAll('.slide').length;
             // console.log(getSlideCount.value)
         })
-        return {currentSlide, nextSlide, prevSlide}
+        return {currentSlide, nextSlide, prevSlide, getSlideCount}
     }
 }
 </script>
