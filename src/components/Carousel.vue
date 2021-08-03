@@ -14,7 +14,7 @@
 
         <!-- Pagination -->
         <div class="pagination">
-            <span v-for="(slide, index) in getSlideCount" :key="index" :class="{active: index + 1 === currentSlide}" >{{ slide }}</span>
+            <span @click="goToSlide(index)" v-for="(slide, index) in getSlideCount" :key="index" :class="{active: index + 1 === currentSlide}" ></span>
         </div>
     </div>
 </template>
@@ -42,13 +42,18 @@ export default {
                 return;
             }
             currentSlide.value -= 1;
-
         }
+
+        // go to slide
+        const goToSlide = (index) => {
+            currentSlide.value = index + 1;
+        };
+        
         onMounted(()=> {
             getSlideCount.value = document.querySelectorAll('.slide').length;
             // console.log(getSlideCount.value)
         })
-        return {currentSlide, nextSlide, prevSlide, getSlideCount}
+        return {currentSlide, nextSlide, prevSlide, getSlideCount, goToSlide}
     }
 }
 </script>
@@ -104,6 +109,10 @@ i{
         border-radius: 50%;
         background-color: #fff;
         box-shadow: 0 1px 3px 0 rgba(0,0,0,0.1), 1 1px 2px 0 rgba(0,0,0,0.06)
+    }
+
+    .active{
+        background-color: #6347c7;
     }
 }
 </style>
