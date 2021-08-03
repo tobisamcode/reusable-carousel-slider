@@ -14,7 +14,7 @@
 
         <!-- Pagination -->
         <div class="pagination">
-            <span v-for="(slide, index) in getSlideCount" :key="index">{{ slide }}</span>
+            <span v-for="(slide, index) in getSlideCount" :key="index" :class="{active: index + 1 === currentSlide}" >{{ slide }}</span>
         </div>
     </div>
 </template>
@@ -54,7 +54,7 @@ export default {
 </script>
 
 <style lang="scss">
-
+// Navigation
 .navigate{
     padding:0 16px;
     height:100%;
@@ -86,4 +86,24 @@ i{
     background-color: #6347c7;
     color: #fff
 }    
+
+// Pagination
+.pagination{
+    position: absolute;
+    bottom: 24px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+
+    span{
+        cursor: pointer;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background-color: #fff;
+        box-shadow: 0 1px 3px 0 rgba(0,0,0,0.1), 1 1px 2px 0 rgba(0,0,0,0.06)
+    }
+}
 </style>
