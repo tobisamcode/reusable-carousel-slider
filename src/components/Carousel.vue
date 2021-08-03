@@ -15,12 +15,39 @@
 </template>
 
 <script>
-import {ref} from 'vue'
+import {ref, onMounted} from 'vue'
 export default {
     setup(){
         const currentSlide = ref(3)
+        const getSlideCount = ref(null)
 
-        return {currentSlide}
+        // next slide 
+        const nextSlide = ()=>{
+            if (currentSlide.value === getSlideCount.value) {
+                currentSlide.value =1;
+                return;
+            }
+            currentSlide.value += 1;
+        }
+
+        // previous slide 
+        const prevSlide = () => {
+            if (currentSlide.value === 1) {
+                currentSlide.value = 1;
+                return;
+            }
+            currentSlide.value -= 1;
+
+        }
+
+
+        onMounted(()=> {
+            getSlideCount.value = document.querySelectorAll('.slide').length;
+            // console.log(getSlideCount.value)
+        })
+
+
+        return {currentSlide, nextSlide, prevSlide}
     }
 }
 </script>
