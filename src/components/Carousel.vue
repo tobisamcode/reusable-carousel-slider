@@ -5,10 +5,10 @@
         <!-- Navigations -->
         <div class="navigate">
             <div class="toggle-page left">
-                <i class="fas fa-chevron-left"></i>
+                <i @click="prevSlide" class="fas fa-chevron-left"></i>
             </div>
             <div class="toggle-page right">
-                <i class="fas fa-chevron-right"></i>
+                <i @click="nextSlide" class="fas fa-chevron-right"></i>
             </div>
         </div>
     </div>
@@ -39,14 +39,10 @@ export default {
             currentSlide.value -= 1;
 
         }
-
-
         onMounted(()=> {
             getSlideCount.value = document.querySelectorAll('.slide').length;
             // console.log(getSlideCount.value)
         })
-
-
         return {currentSlide, nextSlide, prevSlide}
     }
 }
