@@ -22,7 +22,7 @@ export default {
     Slide
   },
   setup(){
-    const carouselSlides = ["bg-1", "bg-2", "bg-3", "bg-3"];
+    const carouselSlides = ["bg-1", "bg-2", "bg-3"];
 
     return {carouselSlides}
   },
