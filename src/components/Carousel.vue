@@ -23,9 +23,10 @@
 import {ref, onMounted} from 'vue'
 export default {
     setup(){
-        const currentSlide = ref(3) 
-        const getSlideCount = ref(null)
-
+        const currentSlide = ref(3) ;
+        const getSlideCount = ref(null);
+        const autoPlayEnabled = ref(true);
+        const timeoutDuration = ref(2000);
         // next slide 
         const nextSlide = ()=>{
             if (currentSlide.value === getSlideCount.value) {
@@ -48,6 +49,20 @@ export default {
         const goToSlide = (index) => {
             currentSlide.value = index + 1;
         };
+
+        // autpplay
+        const autoPlay = () => {
+            setInterval(() => {
+                nextSlide()
+            }, timeoutDuration.value);
+        };
+
+        if (autoPlayEnabled.value){
+            autoPlay()
+        }
+
+
+
         
         onMounted(()=> {
             getSlideCount.value = document.querySelectorAll('.slide').length;
